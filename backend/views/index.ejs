@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Guitar Inventory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <td>end point</td>
+                    <td>request</td>
+                    <td>desc</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>/</td>
+                    <td><span class="get">get</span></td>
+                    <td>Get information on all available end points</td>
+                </tr>
+                <tr>
+                    <td>/roster</td>
+                    <td><span class="get">get</span></td>
+                    <td>Get the roster</td>
+                </tr>
+                <tr>
+                    <td>/roster</td>
+                    <td><span class="post">post</span></td>
+                    <td>Add an employee to the roster</td>
+                </tr>
+                <tr>
+                    <td>/roster</td>
+                    <td><span class="patch">patch</span></td>
+                    <td>Update an employee from the roster</td>
+                </tr>
+                <tr>
+                    <td>/roster</td>
+                    <td><span class="delete">delete</span></td>
+                    <td>Remove an employee from the roster</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

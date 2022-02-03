@@ -1,13 +1,13 @@
-import { Router } from 'express'
+import { Router } from 'express';
 
-import { 
-    getFromRoster, 
-    addToRoster, 
-    updateRoster, 
-    removeFromRoster 
-} from '../controllers/roster'
+import {
+    getFromRoster,
+    addToRoster,
+    updateRoster,
+    removeFromRoster
+} from '../controllers/roster';
 
-export const router = Router();
+const router = Router();
 
 router.get('/', getFromRoster);
 router.post('/', addToRoster);

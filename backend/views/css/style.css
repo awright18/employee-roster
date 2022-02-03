@@ -1,0 +1,28 @@
+table {
+    margin-top: 80px;
+}
+
+.get,
+.post,
+.patch,
+.delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    height: 35px;
+    width: 60px;
+    margin: auto 0;
+}
+.get {
+    background: rgba(200, 255, 200, .6);
+}
+.post {
+    background: rgba(255, 230, 150, .6);
+}
+.patch {
+    background: rgba(255, 200, 150, .6);
+}
+.delete {
+    background: rgba(250, 200, 200, .6);
+}
