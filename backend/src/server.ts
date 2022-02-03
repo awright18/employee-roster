@@ -1,9 +1,9 @@
 import path from 'path';
+import {fileURLToPath} from 'url';
 import express from 'express';
 import cors from 'cors';
-import {fileURLToPath} from 'url';
 
-// import rosterRoutes from './routes/roster';
+import rosterRoutes from "./routes/roster.js";
 
 const app = express();
 const PORT = process.env.port || 3000;
@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render("index");
 });
-// app.get('/roster', rosterRoutes);
+app.use('/roster', rosterRoutes);
 
 app.listen(PORT, () => {
     console.log(path.join(__dirname, '../../', 'views/css'));

@@ -5,7 +5,7 @@ import {
     addToRoster,
     updateRoster,
     removeFromRoster
-} from '../controllers/roster';
+} from '../controllers/roster.js';
 
 const router = Router();
 
