@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/', getFromRoster);
 router.post('/', addToRoster);
-router.patch('/', updateRoster);
+router.patch('/:we_ohr', updateRoster);
 router.delete('/', removeFromRoster);
 
 export default router;

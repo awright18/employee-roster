@@ -2,7 +2,7 @@
 POST http://localhost:3000/roster HTTP/1.1
 content-type: application/json
 
-[["2010-02-03_750015276", 750015276, "Arthut Menethil", "2022-10-02", "REP", "MOR", "08:20", "15:30", "sun-mon", "jone jay", "James Smith", "Judy Johnson", "ATT", "2019-08-12", "jdoe@xyz.com", "PROD", "GAR"],["2010-02-03_750015277", 750015277, "John Smith", "2022-10-02", "REP", "MOR", "08:20", "15:30", "sun-mon", "jone jay", "James Smith", "Judy Johnson", "ATT", "2019-08-12", "jdoe@xyz.com", "PROD", "GAR"]]
+[[123, "2010-02-03_750015276", 750015276, "Arthut Menethul", "2022-10-02", "REP", "MOR", "08:20", "15:30", "sun-mon", "jone jay", "James Smith", "Judy Johnson", "ATT", "2019-08-12", "jdoe@xyz.com", "PROD", "GAR"],["2010-02-03_750015277", 750015277, "John Smith", "2022-10-02", "REP", "MOR", "08:20", "15:30", "sun-mon", "jone jay", "James Smith", "Judy Johnson", "ATT", "2019-08-12", "jdoe@xyz.com", "PROD", "GAR"]]
 
 ###
 GET http://localhost:3000/roster HTTP/1.1
@@ -12,3 +12,9 @@ PATCH http://localhost:3000/roster/2010-02-03_750015278 HTTP/1.1
 content-type: application/json
 
 ["2010-02-03_750015278", 750015278, "John Dane", "2022-10-02", "REP", "MOR", "08:20", "15:30", "sun-mon", "jone jay", "James Smith", "Judy Johnson", "ATT", "2019-08-12", "jdoe@xyz.com", "PROD", "GAR"]
+
+###
+DELETE http://localhost:3000/roster HTTP/1.1
+content-type: application/json
+
+["2010-02-03_750015278", "2010-02-03_750015276", "2010-02-03_750015277"]
