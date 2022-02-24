@@ -1,0 +1,125 @@
+@import url('./colors.css');
+@import url('./text.css');
+@import url('./flex.css');
+@import url('./grid.css');
+@import url('./position.css');
+@import url('./other.css');
+
+/* @import url('https://fonts.googleapis.com/icon?family=Material+Icons'); */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+html {
+    font: normal 400 62.5% 'Roboto', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: normal 400  'Roboto', sans-serif;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.wd-1280 {
+    width: 1280px;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 4rem;
+    padding: 3rem 0 1rem 0;
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    margin-bottom: 2rem;
+}
+
+.roster-nav {
+    padding: 2rem 0;
+}
+.roster-nav button:last-of-type {
+    margin-right: 0;
+}
+
+.grid > * {
+    padding: 1rem 0;
+    border-bottom: 2px solid rgba(240, 240, 240, 1);
+}
+
+fieldset {
+    border-radius: 1rem;
+    border: none;
+    margin: 1rem 0;
+}
+fieldset:hover {
+    background: var(--default-hover);
+}
+    fieldset .del-ico {
+        display: inline-block;
+        color: white;
+        background: var(--delete);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input,
+    select {
+        font-size: var(--tx-sm);
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        border: none;
+        border-radius: .5rem;
+        padding: 1rem var(--padding);
+        margin-left: 1rem;
+        outline: none;
+    }
+    input {
+        border: 1px solid var(--default-hover);
+    }
+    fieldset span[class*="material"] {
+        border-radius: 99px;
+        padding: .25rem;
+        cursor: pointer;
+    }
+
+.tooltip {
+    font-size: var(--tx-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 9rem;
+    position: absolute;
+    left: 0%;
+    bottom: 120%;
+    background: white;
+    border-radius: 1rem;
+    border: 2px dashed red;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+.select-type:hover .tooltip {
+    opacity: 1;
+}

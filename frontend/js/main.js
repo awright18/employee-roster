@@ -1,3 +1,5 @@
+import './tableColumn.js'
+
 let tableColumns = 0;
 
 function addColumn() {

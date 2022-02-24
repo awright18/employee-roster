@@ -1,0 +1,300 @@
+/**************************/
+/* SET COLORS HERE TO USE */
+/**************************/
+:root {
+    --base: rgb(0, 0, 0);
+    --contrast-1: rgb(255, 136, 0);
+    --contrast-2: rgb(255, 180, 0);
+    --accent-1: rgb(220, 220, 220);
+    --accent-2: rgb(242, 246, 247);
+
+    --success: rgba(200, 255, 200, .5);
+    --alert: rgba(255, 240, 100, .5);
+    --danger: rgba(255, 200, 200, .5);
+    --info: rgba(100, 220, 255, .5);
+    --dark: rgba(0, 0, 0, 1);
+    --light: rgba(255, 255, 255, 1);
+    --default: rgba(240, 240, 240);
+    --success-hover: rgba(180, 255, 180, 1);
+    --alert-hover: rgba(255, 235, 80, 1);
+    --danger-hover: rgba(255, 180, 200, 1);
+    --info-hover: rgba(80, 200, 235, 1);
+    --dark-hover: rgba(180, 235, 180, 1);
+    --light-hover: rgba(180, 235, 180, 1);
+    --default-hover: rgba(235, 235, 235, 1);
+
+    --delete: rgba(255, 100, 100);
+}
+
+/***********/
+/* BUTTONS */
+/***********/
+.btn {
+    background: var(--default);
+}
+.btn:hover {
+    background: var(--default-hover);
+}
+.btn.bg-success:hover {
+    background: var(--success-hover);
+}
+.btn.bg-alert:hover {
+    background: var(--alert-hover);
+}
+.btn.bg-danger:hover {
+    background: var(--danger-hover);
+}
+.btn.bg-info:hover {
+    background: var(--info-hover);
+}
+.btn.bg-dark:hover {
+    background: var(--dark-hover);
+}
+.btn.bg-light:hover {
+    background: var(--light-hover);
+}
+
+/***********/
+/*** TEXT **/
+/***********/
+.tx-base {
+    color: var(--base);
+}
+.tx-contrast-1 {
+    color: var(--contrast-1);
+}
+.tx-contrast-2 {
+    color: var(--contrast-2);
+}
+.tx-accent-1 {
+    color: var(--accent-1);
+}
+.tx-accent-2 {
+    color: var(--accent-2);
+}
+.tx-default {
+    color: var(--default);
+}
+.tx-success {
+    color: var(--success);
+}
+.tx-alert {
+    color: var(--alert);
+}
+.tx-danger {
+    color: var(--danger);
+}
+.tx-info {
+    color: var(--info);
+}
+.tx-dark {
+    color: var(--dark);
+}
+.tx-light {
+    color: var(--light);
+}
+.tx-default {
+    color: var(--default);
+}
+
+.tx-b-base::before {
+    color: var(--base);
+}
+.tx-b-contrast-1::before {
+    color: var(--contrast-1);
+}
+.tx-b-contrast-2::before {
+    color: var(--contrast-2);
+}
+.tx-b-accent-1::before {
+    color: var(--accent-1);
+}
+.tx-b-accent-2::before {
+    color: var(--accent-2);
+}
+.tx-b-light::before {
+    color: var(--light);
+}
+.tx-b-dark::before {
+    color: var(--dark);
+}
+.tx-b-light::before {
+    color: var(--light);
+}
+.tx-b-dark::before {
+    color: var(--dark);
+}
+.tx-b-light::before {
+    color: var(--light);
+}
+.tx-b-dark::before {
+    color: var(--dark);
+}
+.tx-b-default::before {
+    color: var(--default);
+}
+
+.tx-a-base::after {
+    color: var(--base);
+}
+.tx-a-contrast-1::after {
+    color: var(--contrast-1);
+}
+.tx-a-contrast-2::after {
+    color: var(--contrast-2);
+}
+.tx-a-accent-1::after {
+    color: var(--accent-1);
+}
+.tx-a-accent-2::after {
+    color: var(--accent-2);
+}
+.tx-a-light::after {
+    color: var(--light);
+}
+.tx-a-dark::after {
+    color: var(--dark);
+}
+.tx-a-default::after {
+    color: var(--default);
+}
+
+/**************/
+/* BACKGROUND */
+/**************/
+.bg-base {
+    background: var(--base);
+}
+.bg-contrast-1 {
+    background: var(--contrast-1);
+}
+.bg-contrast-2 {
+    background: var(--contrast-2);
+}
+.bg-accent-1 {
+    background: var(--accent-1);
+}
+.bg-accent-2 {
+    background: var(--accent-2);
+}
+.bg-success {
+    background: var(--success);
+}
+.bg-alert {
+    background: var(--alert);
+}
+.bg-danger {
+    background: var(--danger);
+}
+.bg-info {
+    background: var(--info);
+}
+.bg-dark {
+    background: var(--dark);
+}
+.bg-light {
+    background: var(--light);
+}
+.bg-default {
+    background: var(--default);
+}
+
+.bg-b-base::before {
+    background: var(--base);
+}
+.bg-b-contrast-1::before {
+    background: var(--contrast-1);
+}
+.bg-b-contrast-2::before {
+    background: var(--contrast-2);
+}
+.bg-b-accent-1::before {
+    background: var(--accent-1);
+}
+.bg-b-accent-2::before {
+    background: var(--accent-2);
+}
+.bg-b-success::before {
+    background: var(--success);
+}
+.bg-b-alert::before {
+    background: var(--alert);
+}
+.bg-b-danger::before {
+    background: var(--danger);
+}
+.bg-b-info::before {
+    background: var(--info);
+}
+.bg-b-light::before {
+    background: var(--light);
+}
+.bg-b-dark::before {
+    background: var(--dark);
+}
+.bg-b-default::before {
+    background: var(--default);
+}
+
+.bg-a-base::after {
+    background: var(--base);
+}
+.bg-a-contrast-1::after {
+    background: var(--contrast-1);
+}
+.bg-a-contrast-2::after {
+    background: var(--contrast-2);
+}
+.bg-a-accent-1::after {
+    background: var(--accent-1);
+}
+.bg-a-accent-2::after {
+    background: var(--accent-2);
+}
+.bg-a-success::before {
+    background: var(--success);
+}
+.bg-a-alert::before {
+    background: var(--alert);
+}
+.bg-a-danger::before {
+    background: var(--danger);
+}
+.bg-a-info::before {
+    background: var(--info);
+}
+.bg-a-light::after {
+    background: var(--light);
+}
+.bg-a-dark::after {
+    background: var(--dark);
+}
+.bg-a-default::after {
+    background: var(--default);
+}
+
+
+.br-base {
+    border-color: var(--base);
+}
+.br-contrast-1 {
+    border-color: var(--contrast-1);
+}
+.br-contrast-2 {
+    border-color: var(--contrast-2);
+}
+.br-accent-1 {
+    border-color: var(--accent-1);
+}
+.br-accent-2 {
+    border-color: var(--accent-2);
+}
+.br-light {
+    border-color: var(--light);
+}
+.br-dark {
+    border-color: var(--dark);
+}
+.br-default {
+    border-color: var(--default);
+}
