@@ -2,6 +2,21 @@
     display: flex;
 }
 
+
+.f-row {
+    flex-direction: row;
+}
+
+.f-col {
+    flex-direction: column;
+}
+.f-rev-row {
+    flex-direction: row-reverse;
+}
+.f-rev-col {
+    flex-direction: column-reverse;
+}
+
 .fx-c {
     justify-content: center;
 }
@@ -37,13 +52,6 @@
     align-items: space-between;
 }
 
-.f-row {
-    flex-direction: row;
-}
-
-.f-col {
-    flex-direction: column;
-}
 
 .fb-5 {
     flex-basis: 5%;
