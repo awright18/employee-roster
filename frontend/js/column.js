@@ -37,6 +37,8 @@ export class Column {
         let baseElement = this.columnContent.querySelector('fieldset')
         // columnsElement.remove(baseElement)
 
+        // Should log to console when closeButton is clicked
+        // but is logging to console when the column is created? (Add button)
         console.log(baseElement)
     }
 }
