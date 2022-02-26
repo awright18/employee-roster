@@ -1,0 +1,70 @@
+<!-- <template id="tableColumn"> -->
+    <fieldset class="flex w-100 f-col tx-sm">
+        <section class="w-100 flex fy-c fx-sa p-100 bg-default toggle-gen-col" id="colInfo">
+            <span class="material-icons-outlined del-ico">clear</span>
+
+            <label class="fb-50 pl-200">
+                Column Name
+                <input class="w-70" type="text">
+            </label>
+                
+            <section class="fb-40 flex fx-s mrc-100">
+
+                <section class="select-type bg-accent-1 br-round px-100 py-50 relative">
+                    <span class="material-icons-outlined bg-info">format_quote</span>
+                    <span class="material-icons-outlined">tag</span>
+                    
+                    <section class="tooltip">
+                        Column Type
+                    </section>
+
+                    <select name="" id="" class="hidden">
+                        <option value="text">TEXT</option>
+                        <option value="integer">INTEGER</option>
+                    </select>
+                </section>
+                
+                <section class="select-type bg-accent-1 br-round px-100 py-50 relative">
+                    <span class="material-icons-outlined">hide_source</span>
+
+                    <section class="tooltip">
+                        Allow null values?
+                    </section>
+
+                    <select name="" id="" class="hidden">
+                        <option value="">FALSE</option>
+                        <option value="NOT NULL">TRUE</option>
+                    </select>
+                </section>
+
+                <section class="select-type bg-accent-1 br-round px-100 py-50 relative">
+                    <span class="material-icons-outlined">fact_check</span>
+
+                    <section class="tooltip">
+                        Only Unique Values?
+                    </section>
+
+                    <select name="" id="" class="hidden">
+                        <option value="">FALSE</option>
+                        <option value="UNIQUE">TRUE</option>
+                    </select>
+                </section>
+
+                <section class="select-type bg-accent-1 br-round px-100 py-50 relative">
+                    <span class="material-icons-outlined">calculate</span>
+
+                    <section class="tooltip">
+                        Generated Column?
+                    </section>
+                </section>
+
+            </section>
+        </section>
+        <section class="w-100 px-100 pb-100 bg-default" id="generatedColFormula">
+            <label>
+                Formula
+                <input class="mx-0" type="text" placeholder="Formula for the column">
+            </label>
+        </section>
+    </fieldset>
+<!-- </template> -->

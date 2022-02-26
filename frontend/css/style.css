@@ -73,14 +73,14 @@ fieldset {
     border: none;
     margin: 1rem 0;
 }
-    .colInfo {
+    #colInfo {
         border-radius: 1rem;
     }
-    fieldset:hover .colInfo,
-    fieldset:hover .genColBg {
+    fieldset:hover #colInfo,
+    fieldset:hover #generatedColFormula {
         background: var(--default-hover);
     }
-    .genColBg {
+    .generatedColFormula {
         left: 70%;
         border-bottom-left-radius: 1rem; 
         border-bottom-right-radius: 1rem; 
@@ -131,6 +131,25 @@ fieldset {
     opacity: 0;
     transition: all 0.4s ease;
 }
-.select-type:hover .tooltip {
+.column-type:hover .tooltip {
     opacity: 1;
+}
+
+/* IF GENERATED FORMULA COL IS VISIBLE */
+#colInfo.toggle-gen-col {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#colInfo.toggle-gen-col + #generatedColFormula {
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+#colInfo.toggle-gen-col + #generatedColFormula label {
+    display: inline-block;
+    width: 100%;
+    padding-left: 12%;
+}
+#colInfo.toggle-gen-col + #generatedColFormula input {
+    width: 76%;
+    margin-left: 1%;
 }
