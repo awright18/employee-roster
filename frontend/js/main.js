@@ -14,11 +14,3 @@ function createRosterColumn () {
 
     columnsElement.appendChild(column.columnContent)
 }
-
-// REMOVING COLUMNS
-function deleteColumn (e) {
-    let idNumber = e.target.id.slice(1, e.target.id.length)
-    
-    let colElement = document.querySelector(`#rsCol${idNumber}`)
-    colElement.remove()
-}
