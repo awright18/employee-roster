@@ -1,20 +1,24 @@
-import './tableColumn.js'
+import { Column } from'./column.js'
 
-let tableColumns = 0;
+let columnsList = []
 
-function addColumn() {
-    let formElement = document.getElementById("createTable");
-    let columnElement = document.getElementById("tableColumn").content;
-    let columnClone = document.importNode(columnElement, true);
-    columnClone.querySelector("fieldset").id = "column_" + tableColumns;
+// ADD COLUMN EVENT
+const addButton = document.querySelector('#addButton')
+addButton.addEventListener('click', createRosterColumn)
 
-    formElement.appendChild(columnClone);
+function createRosterColumn () {
+    const columnsElement = document.querySelector('#rosterColumns')
 
-    tableColumns++;
-    console.log(columnClone);
+    let column = new Column()
+    columnsList.push(column.columnContent)
+
+    columnsElement.appendChild(column.columnContent)
 }
 
-function removeColumn (e) {
-    e.target.parentElement.remove();
-
+// REMOVING COLUMNS
+function deleteColumn (e) {
+    let idNumber = e.target.id.slice(1, e.target.id.length)
+    
+    let colElement = document.querySelector(`#rsCol${idNumber}`)
+    colElement.remove()
 }
