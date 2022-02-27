@@ -2,10 +2,10 @@
 
 export class Columns {
 
-    constructor (injectorElement, driverElement, templateFragment, closeElementSelector) {
+    constructor (injectorElement, driverElement, templateFragment, deleteIdentifier) {
         this.list = [];
         this.injectorElement = injectorElement
-        this.closeElementSelector = closeElementSelector
+        this.deleteIdentifier = deleteIdentifier
         this.templateFragment = document.importNode(templateFragment, true)
 
         this.eventDriverElement = driverElement
