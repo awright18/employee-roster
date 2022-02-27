@@ -1,77 +1,128 @@
-export class Column {
-    #options;
+// templateElement is a document fragment
 
-    constructor () {
-        this.#options = []
+export class Columns {
 
-        let templateHTML = document.getElementById('tableColumn').content
-        this.columnContent = templateHTML.cloneNode(true)
+    constructor (injectorElement, driverElement, templateFragment, closeElementSelector) {
+        this.list = [];
+        this.injectorElement = injectorElement
+        this.closeElementSelector = closeElementSelector
+        this.templateFragment = document.importNode(templateFragment, true)
 
-        this.createOptions()
-        this.addCloseButton()
-    }
+        this.eventDriverElement = driverElement
+        this.eventDriverElement.addEventListener('click', this.createColumn.bind(this))
 
-    createOptions () {
-        let optionElements = this.columnContent.querySelectorAll('.column-option')
-        optionElements.forEach((option) => {
-            let optionObj = new ColumnOption(option, !option.classList.contains('not-empty'))
-            this.addOption(optionObj)
-        })
-    }
-
-    addCloseButton () {
-        let closeButton = this.columnContent.querySelector('.del-ico')
-        closeButton.addEventListener('click', this.deleteColumn())
-    }
-
-    getOptions () {
-        return this.#options
+        injectorElement.addEventListener('columnDeleted', this.onColumnDeleted.bind(this))
     }
     
-    addOption (option) {
-        this.#options.push(option)
+    createColumn () {
+        let column = new Column(this.injectorElement, this.templateFragment, this.list.length + 1, '.del-ico')
+        this.list.push(column)
+    }
+
+    onColumnDeleted (event) {
+        this.list = this.list.filter(column => column.mainElement.id != event.detail.id)
+    }
+
+}
+
+export class Column {
+    injectorElement;
+    mainElement;
+    colNumber;
+    #options;
+
+    constructor (injectorElement, templateFragment, columnCount, deleteIdentifier) {
+        this.injectorElement = injectorElement
+        
+        // Since first child is always the text #document-fragment
+        this.mainElement = templateFragment.firstChild.nextSibling
+        
+        this.deleteElement = this.mainElement.querySelector(deleteIdentifier)
+        this.deleteElement.addEventListener('click', this.deleteColumn.bind(this))
+
+        this.colNumber = columnCount
+        this.#options = []
+        this.getOptions()
+        this.addToDom.bind(this)()
+    }
+    
+    getOptions () {
+        let options = this.mainElement.querySelectorAll('.column-option')
+        let allowEmpty;
+        let columnOption;
+
+        options.forEach((option) => {
+            if (option.classList.contains('not-empty')) {
+                allowEmpty = false
+            } else {
+                allowEmpty = true
+            }
+
+            columnOption = new ColumnOption(option, allowEmpty)
+        })
+
     }
 
     deleteColumn () {
-        let columnsElement = document.querySelector('#rosterColumns')
-        let baseElement = this.columnContent.querySelector('fieldset')
-        // columnsElement.remove(baseElement)
 
-        // Should log to console when closeButton is clicked
-        // but is logging to console when the column is created? (Add button)
-        console.log(baseElement)
+        let element = document.querySelector(`#col_${this.colNumber}`)
+        document.querySelector(`#${this.mainElement.id}`).remove(element)
+
+        // Custom event to update the columns list in Columns class
+        const columnDeleted = new CustomEvent('columnDeleted', {
+            detail: {
+                id: `col_${this.colNumber}`
+            }
+        })
+        document.querySelector(`#${this.injectorElement.id}`).dispatchEvent(columnDeleted)
     }
-}
 
+    addToDom () {
+        this.mainElement.id = `col_${this.colNumber}`
+        this.injectorElement.appendChild(this.mainElement)
+    }
+
+}
 
 export class ColumnOption {
 
-    constructor (parentElement, allowEmpty) {
-        this.parentElement = parentElement
+    selectedElement;
+
+    constructor (optionElement, allowEmpty) {
+        this.optionElement = optionElement
         this.allowEmpty = allowEmpty
-        this.children = []
+        this.optionValueElements = []
         this.isAnOptionSelected = false
-        this.selectedElement
 
-        for (let childElement of this.parentElement.children) {
-            this.children.push({
-                element: childElement,
-                allowDeselect: allowEmpty,
-                isSelected: false
-            })
+        // this.getOptions.bind(this)
+        this.getOptions.bind(this)()
+    }
+
+    getOptions () {
+        for (let childElement of this.optionElement.children) {
+
+            if (childElement.classList.contains("option-value")) {
+                this.optionValueElements.push({
+                    element: childElement,
+                    allowOptionEmpty: this.allowEmpty,
+                    isSelected: false
+                })
+                this.optionElement.addEventListener('click', this.toggleOptions.bind(this))
+            }
         }
-
-        this.parentElement.addEventListener('click', this.toggleOptions)
-
-        // this.children = [...this.element.chldren].map
+        console.log(this.optionValueElements)
     }
 
     toggleOptions (click) {
-        
-        // ONLY proceed if the clicked element is not the parent
-        if (click.target != this.parentElement) {
-            
 
+        // ONLY proceed if the clicked element the option values element
+        // and not the option element itself
+        if (click.target != this.optionElement) {
+            
+            if (this.isAnOptionSelected === false && this.allowEmpty === false) {
+                click.target.classList.add('bg-info')
+                this.isAnOptionSelected = true
+            }
 
         }
     }

@@ -1,16 +1,8 @@
-import { Column } from'./column.js'
+import { Columns, Column } from'./column.js'
 
-let columnsList = []
+const eventDriverElement = document.querySelector('#addButton')
+const injectorElement = document.querySelector('#columns')
+const templateFragment = document.querySelector('#column').content
+const closeElementSelector = '.del-ico'
 
-// ADD COLUMN EVENT
-const addButton = document.querySelector('#addButton')
-addButton.addEventListener('click', createRosterColumn)
-
-function createRosterColumn () {
-    const columnsElement = document.querySelector('#rosterColumns')
-
-    let column = new Column()
-    columnsList.push(column.columnContent)
-
-    columnsElement.appendChild(column.columnContent)
-}
+const columns = new Columns(injectorElement, eventDriverElement, templateFragment, closeElementSelector)
