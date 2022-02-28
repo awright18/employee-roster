@@ -31,12 +31,12 @@ export class Column {
     colNumber;
     #options;
 
-    constructor (injectorElement, templateFragment, columnCount, deleteIdentifier) {
+    constructor (injectorElement, templateElement, columnCount, deleteIdentifier) {
         this.injectorElement = injectorElement
-        
-        // Since first child is always the text #document-fragment
-        this.mainElement = templateFragment.firstChild.nextSibling
-        
+
+        let templateContent = templateElement.content.cloneNode(true)
+        this.mainElement = templateContent.firstChild.nextSibling
+
         this.deleteElement = this.mainElement.querySelector(deleteIdentifier)
         this.deleteElement.addEventListener('click', this.deleteColumn.bind(this))
 
@@ -68,13 +68,15 @@ export class Column {
         let element = document.querySelector(`#col_${this.colNumber}`)
         document.querySelector(`#${this.mainElement.id}`).remove(element)
 
-        // Custom event to update the columns list in Columns class
+        // Event to update the columns list in Columns class
         const columnDeleted = new CustomEvent('columnDeleted', {
             detail: {
                 id: `col_${this.colNumber}`
             }
         })
-        document.querySelector(`#${this.injectorElement.id}`).dispatchEvent(columnDeleted)
+        document.querySelector(`#${this.injectorElement.id}`).dispatchEvent(
+            columnDeleted
+        )
     }
 
     addToDom () {
@@ -107,23 +109,24 @@ export class ColumnOption {
                     allowOptionEmpty: this.allowEmpty,
                     isSelected: false
                 })
-                this.optionElement.addEventListener('click', this.toggleOptions.bind(this))
+                this.optionValueElements.forEach((option) => {
+                    option.element.addEventListener(
+                        'click', 
+                        this.toggleOptions.bind(this)
+                    )
+                })
             }
         }
-        console.log(this.optionValueElements)
     }
 
     toggleOptions (click) {
 
-        // ONLY proceed if the clicked element the option values element
-        // and not the option element itself
-        if (click.target != this.optionElement) {
+        console.log(click.target)
             
-            if (this.isAnOptionSelected === false && this.allowEmpty === false) {
-                click.target.classList.add('bg-info')
-                this.isAnOptionSelected = true
-            }
+            this.optionValueElements.forEach((optionValueElement) => {
 
-        }
+                // do something
+
+            })
     }
 }
