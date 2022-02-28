@@ -4,51 +4,62 @@ export class Columns {
 
     constructor (injectorElement, driverElement, templateFragment, deleteIdentifier) {
         this.list = [];
+        
         this.injectorElement = injectorElement
+        
         this.deleteIdentifier = deleteIdentifier
-        this.templateFragment = document.importNode(templateFragment, true)
+        
+        this.templateFragment = templateFragment//document.importNode(templateFragment, true)
 
         this.eventDriverElement = driverElement
-        this.eventDriverElement.addEventListener('click', this.createColumn.bind(this))
+        
+        this.eventDriverElement.addEventListener('click', this.addColumn.bind(this))
 
-        injectorElement.addEventListener('columnDeleted', this.onColumnDeleted.bind(this))
     }
-    
-    createColumn () {
-        let column = new Column(this.injectorElement, this.templateFragment, this.list.length + 1, '.del-ico')
+
+    addColumn () {
+        let columnId = this.list.length + 1;
+
+        let column = new Column(this.templateFragment,columnId, '.del-ico',this)
+
         this.list.push(column)
+
+        this.injectorElement.appendChild(column.element);
     }
 
-    onColumnDeleted (event) {
-        this.list = this.list.filter(column => column.mainElement.id != event.detail.id)
+    onDelete (columnElement) {
+    
+        this.list = this.list.filter(column => column.element.id != columnElement.id)
+
+        columnElement.remove();
     }
 
 }
 
-export class Column {
-    injectorElement;
-    mainElement;
-    colNumber;
+export class Column {    
     #options;
+    columns;
+    constructor (templateElement, columnId, deleteIdentifier, columns) {
+        
+        this.columns = columns;
 
-    constructor (injectorElement, templateElement, columnCount, deleteIdentifier) {
-        this.injectorElement = injectorElement
+        this.element = templateElement.content.firstElementChild.cloneNode(true)
 
-        let templateContent = templateElement.content.cloneNode(true)
-        this.mainElement = templateContent.firstChild.nextSibling
+        this.element.id = `col_${columnId}`;
 
-        this.deleteElement = this.mainElement.querySelector(deleteIdentifier)
-        this.deleteElement.addEventListener('click', this.deleteColumn.bind(this))
+        this.deleteElement = this.element.querySelector(deleteIdentifier)
 
-        this.colNumber = columnCount
+        this.deleteElement.addEventListener('click', this.deleteColumn.bind(this));
+
         this.#options = []
         this.getOptions()
-        this.addToDom.bind(this)()
     }
     
     getOptions () {
-        let options = this.mainElement.querySelectorAll('.column-option')
+        let options = this.element.querySelectorAll('.column-option')
+
         let allowEmpty;
+        
         let columnOption;
 
         options.forEach((option) => {
@@ -60,30 +71,15 @@ export class Column {
 
             columnOption = new ColumnOption(option, allowEmpty)
         })
-
     }
 
-    deleteColumn () {
+    deleteColumn (click) {
+        //This finds the closest anscestor fieldset and grabs its id 
+        let columnElement = click.target.closest('fieldset');    
 
-        let element = document.querySelector(`#col_${this.colNumber}`)
-        document.querySelector(`#${this.mainElement.id}`).remove(element)
-
-        // Event to update the columns list in Columns class
-        const columnDeleted = new CustomEvent('columnDeleted', {
-            detail: {
-                id: `col_${this.colNumber}`
-            }
-        })
-        document.querySelector(`#${this.injectorElement.id}`).dispatchEvent(
-            columnDeleted
-        )
+        //tell the columns object to delete this element
+        this.columns.onDelete(columnElement);
     }
-
-    addToDom () {
-        this.mainElement.id = `col_${this.colNumber}`
-        this.injectorElement.appendChild(this.mainElement)
-    }
-
 }
 
 export class ColumnOption {
@@ -92,15 +88,18 @@ export class ColumnOption {
 
     constructor (optionElement, allowEmpty) {
         this.optionElement = optionElement
+        
         this.allowEmpty = allowEmpty
+        
         this.optionValueElements = []
-        this.isAnOptionSelected = false
 
-        // this.getOptions.bind(this)
+        this.isAnOptionSelected = false
+        
         this.getOptions.bind(this)()
     }
 
     getOptions () {
+        
         for (let childElement of this.optionElement.children) {
 
             if (childElement.classList.contains("option-value")) {
@@ -110,6 +109,7 @@ export class ColumnOption {
                     isSelected: false
                 })
                 this.optionValueElements.forEach((option) => {
+                    console.log(this);
                     option.element.addEventListener(
                         'click', 
                         this.toggleOptions.bind(this)
